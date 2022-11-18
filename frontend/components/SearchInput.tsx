@@ -23,7 +23,11 @@ const SearchInput: React.FC<SearchInputProps> = ({
         {type === "stock" ? "Stock" : `Weight (%)`}
       </label>
       {type === "stock" ? (
-        <StockSearchInput option={option} handleChange={handleChange} id={type} />
+        <StockSearchInput
+          option={option}
+          handleChange={handleChange}
+          id={type}
+        />
       ) : (
         <TextInput
           value={option.weight}

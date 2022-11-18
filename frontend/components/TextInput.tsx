@@ -4,7 +4,7 @@ const TextInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({
   id,
   value,
   onChange,
-  type
+  type,
 }) => {
   return (
     <input

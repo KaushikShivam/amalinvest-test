@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import axios from 'axios';
 import * as dayjs from 'dayjs';
+import { AVG_MARKET_PERFORMANCE } from './spy-data';
 import { TickerInfo } from './stock.dto';
 
 @Injectable()
@@ -58,24 +59,13 @@ export class StockService {
         });
       });
 
-      // Fetch average market performance to adjust for stocks existing later in our time period.
-      const AVG_MARKET_TICKER = 'SPY';
-      const avgMarketResponse = await axios.get<{
-        ticker: string;
-        results: TickerInfo[];
-      }>(
-        `${this.BASE_URL}v2/aggs/ticker/${AVG_MARKET_TICKER}/range/1/day/${lastYear}/${today}?adjusted=false&sort=asc&limit=${days}&apiKey=${process.env.POLYGON_KEY}`,
-      );
-      const avgMarketPerformance: { [key: string]: number } = {};
-      avgMarketResponse.data.results.forEach(
-        (i) => (avgMarketPerformance[i.t] = i.c),
-      );
-
+      // Find the dates from the stock that has the most available dates;
+      const stockDates = responses
+        .sort((a, b) => b.data.results.length - a.data.results.length)[0]
+        .data.results.map((i) => i.t);
       // Set all available dates to performance object
       const performanceObj: { [key: string]: number } = {};
-      Object.keys(avgMarketPerformance).forEach(
-        (key) => (performanceObj[key] = 0),
-      );
+      stockDates.forEach((key) => (performanceObj[key] = 0));
 
       // Use average performance value if the stock doesn't have data on specific date.
       Object.entries(performanceObj).forEach(([key, _]) => {
@@ -83,7 +73,7 @@ export class StockService {
           const result = resultsObj[stock];
           performanceObj[key] += result[key]
             ? result[key] * (parseFloat(weight) / 100)
-            : avgMarketPerformance[key] * (parseFloat(weight) / 100);
+            : AVG_MARKET_PERFORMANCE[key] * (parseFloat(weight) / 100);
         });
       });
 

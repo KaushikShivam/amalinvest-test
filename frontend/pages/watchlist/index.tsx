@@ -18,14 +18,12 @@ const WatchlistPage = () => {
   const addField = () => {
     setError("");
     setFormValues([...formValues, { id: uuidv4(), stock: "", weight: "" }]);
-  }
-    
+  };
 
   const removeField = (id: string) => {
     setError("");
     setFormValues(formValues.filter((value) => value.id !== id));
-  }
-    
+  };
 
   const handleChange = (body: Partial<StockWithWeight>) => {
     setError("");
@@ -37,7 +35,10 @@ const WatchlistPage = () => {
   };
 
   const handleSubmit = async () => {
-    if (Array.from(new Set(formValues.map((i) => i.stock))).length !== formValues.map((i) => i.stock).length) {
+    if (
+      Array.from(new Set(formValues.map((i) => i.stock))).length !==
+      formValues.map((i) => i.stock).length
+    ) {
       setError("You can not add same stocks more than once");
       return;
     }
@@ -72,7 +73,7 @@ const WatchlistPage = () => {
       setPerformanceData([]);
     }
   };
-  
+
   return (
     <>
       <nav className="h-14 flex items-center justify-between px-4">

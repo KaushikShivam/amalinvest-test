@@ -13,7 +13,7 @@ const Chart: React.FC<ChartProps> = ({ performanceData }) => {
       constructorType={"stockChart"}
       options={{
         title: {
-          text: "Portfolio Stock Performance",
+          text: "Portfolio Performance",
         },
         series: [
           {
