@@ -17,8 +17,8 @@ It's a simple tool that allows a user to enter a list of up to 5 stocks and the 
 
 # Final Thoughts:
 1. ### Assumptions I made
-- I decided to use the container pattern for the frontend where the watchlist index js page is responsible for all the orchestration and side-effects. Relevant data is then passed down to the children components. Most components are dumb (Except the stock search input) for this purpose.
-- I decided to use the Repository pattern for the backend where each service is responsible for 1 source and the related business logic.
+- I decided to use the container pattern for the frontend where the watchlist index page is responsible for all the orchestration and side-effects. Relevant data is then passed down to the children components. Most components are dumb (Except the stock search input) for this purpose.
+- I decided to use the Repository pattern for the backend where each service is responsible for 1 resource and the related business logic.
 - I used a POST request for the "/stock/performance" endpoint cause this is where we would have ideally saved this information in our DB. It is debatable I guess :D 
 - I didn't use any state management as this was a small project and all the state could be effectively handled by the container.
 
