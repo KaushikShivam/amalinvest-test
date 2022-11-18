@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+  "commands": [
+    {
+      "name": "",
+      "commandKind": "global",
+      "summary": "Types",
+      "shellCommand": "node <packageFolder>/dist/index.js",
+      "safeForSimultaneousRushProcesses": true
+    }
+  ]
+  // "parameters": [],
+}

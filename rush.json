@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.64.0",
+  "pnpmVersion": "6.24.2",
+  "pnpmOptions": {
+    "useWorkspaces": true
+  },
+  "repository": {
+    "url": "",
+    "defaultBranch": "main",
+    "defaultRemote": "origin"
+  },
+  "projectFolderMaxDepth": 3,
+  "projects": [
+    {
+      "packageName": "frontend",
+      "projectFolder": "frontend"
+    },
+    {
+      "packageName": "backend",
+      "projectFolder": "backend"
+    },
+    {
+      "packageName": "@amalinvest/types",
+      "projectFolder": "packages/types"
+    }
+  ]
+}

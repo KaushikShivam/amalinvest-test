@@ -1,0 +1,40 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "run-s build:**",
+    "dev": "run-p nextdev deps-watch",
+    "nextdev": "next dev",
+    "deps-watch": "rush build:watch --to-except dotcom",
+    "build:next": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "eslint": "8.27.0",
+    "eslint-config-next": "13.0.3",
+    "next": "13.0.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.3",
+    "npm-run-all": "^4.1.5",
+    "formik": "^2.2.6",
+    "@amalinvest/types": "workspace:*",
+    "uuid": "~9.0.0",
+    "highcharts": "~10.3.1",
+    "highcharts-react-official": "~3.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "tailwindcss": "~2.2.9",
+    "postcss": "~8.4.18",
+    "autoprefixer": "~10.4.13",
+    "@types/uuid": "~8.3.4"
+  }
+}
