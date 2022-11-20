@@ -103,10 +103,6 @@ export class StockService {
               ? previousTrades.pop()[1]
               : AVG_MARKET_PERFORMANCE[key] * allotedShares[stock];
           }
-
-          performanceObj[key] += result[key]
-            ? result[key] * allotedShares[stock]
-            : AVG_MARKET_PERFORMANCE[key] * allotedShares[stock];
         });
       });
 
